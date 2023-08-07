@@ -16,7 +16,10 @@ import { Input } from "./ui/Input"
 import ProductCard from "./ProductCard"
 import React, { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
-import { getProductsInCart } from "@/services/product"
+import {
+	buyProductsInCart,
+	getProductsInCart,
+} from "@/services/product"
 import { toast } from "@/components/ui/use-toast"
 import { Product } from "product"
 import { Check, ShoppingCart } from "lucide-react"
@@ -59,6 +62,23 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 		}
 	}, [status, isReloadCartNeeded])
 
+	const buyProductsInCartHandler = () => {
+		buyProductsInCart()
+			.then(res => {
+				toast({
+					description: res.data,
+					variant: "success",
+				})
+			})
+			.catch(err =>
+				toast({
+					description: err.response.data,
+					variant: "destructive",
+				})
+			)
+		dispatch(reloadCart())
+	}
+
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
@@ -82,19 +102,18 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 					</SheetDescription>
 				</SheetHeader>
 				<div className="flex flex-col gap-2 pt-2 px-2 overflow-y-auto overflow-x-hidden flex-grow border-2 border-_white rounded-sm">
-					{products
-						? products.map(product => {
-								return (
-									<div key={product.id}>
-										<ProductCard
-											product={product}
-											isInCart
-										/>
-										<hr className="border-t-2 mt-2 border-_white" />
-									</div>
-								)
-						  })
-						: null}
+					{products &&
+						products.map(product => {
+							return (
+								<div key={product.id}>
+									<ProductCard
+										product={product}
+										isInCart
+									/>
+									<hr className="border-t-2 mt-2 border-_white" />
+								</div>
+							)
+						})}
 				</div>
 				<div className="flex justify-between items-center">
 					<div className="">
@@ -112,9 +131,9 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 						variant={"custom"}
 						size={"lg"}
 						className={"text-lg font-normal bg-_comodin"}
-						onClick={() => {}}
+						onClick={buyProductsInCartHandler}
 					>
-						Buy
+						Order now
 					</Button>
 				</div>
 			</SheetContent>

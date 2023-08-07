@@ -83,8 +83,8 @@ model Product {
   productImages ProductImage[]
   stock         Int
   //Owner
-  user          User?          @relation("OwnProducts", fields: [userId], references: [id])
-  userId        String?        @db.ObjectId
+  user          User           @relation("OwnProducts", fields: [userId], references: [id])
+  userId        String         @db.ObjectId
 
   //Relation to Category model
   category   Category[] @relation(fields: [categoryId], references: [id])
