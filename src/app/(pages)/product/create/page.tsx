@@ -133,7 +133,8 @@ export default function Sell() {
 				.catch((err: AxiosError) => {
 					console.log(err)
 					toast({
-						description: err.response?.data,
+						description:
+							"There was a problem creating the product",
 						variant: "destructive",
 					})
 				})
