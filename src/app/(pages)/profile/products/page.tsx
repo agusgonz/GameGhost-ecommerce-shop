@@ -28,17 +28,16 @@ const page: FC<pageProps> = ({}) => {
 	}, [status])
 	return (
 		<div className="border-2 border-_white  text-_white  rounded-sm">
-			<h2 className="p-3 bg-_white font-normal text-center text-_darkBlue">
-				Your products
-			</h2>
-			<div className="grid lg:grid-cols-2">
+			<div className="grid lg:grid-cols-2 p-2 gap-2">
 				{products.map(product => {
 					return (
-						<ProductCard
-							key={product.id + ""}
-							product={product}
-							includeDescription
-						/>
+						<>
+							<ProductCard
+								key={product.id + ""}
+								product={product}
+								includeDescription
+							/>
+						</>
 					)
 				})}
 			</div>

@@ -22,8 +22,8 @@ export default function ProfileLayout({
 
 	if (status == "authenticated") {
 		return (
-			<div className="md:grid md:grid-cols-3">
-				<div className="mx-auto">
+			<div className="flex flex-col gap-12 md:grid md:grid-cols-3 md:gap-2">
+				<div className="w-40  mx-auto flex flex-col gap-12">
 					<div className=" gap-8 flex flex-col justify-center items-center">
 						<figure>
 							<AvatarIcon
@@ -40,9 +40,15 @@ export default function ProfileLayout({
 							</p>
 						</div>
 					</div>
-					<Link href={"/profile/products"}>
-						Your products
-					</Link>
+					<div className="flex flex-col gap-2 pl-2">
+						<Link href={"/profile/products"}>
+							Orders in progress
+						</Link>
+						<hr className="border-t-1 border-_white" />
+
+						<Link href={"/profile/products"}>Products</Link>
+						<Link href={"/profile/products"}>Sellings</Link>
+					</div>
 				</div>
 
 				<div className="col-span-2">{children}</div>
