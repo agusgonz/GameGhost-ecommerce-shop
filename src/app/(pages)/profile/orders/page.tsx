@@ -1,11 +1,8 @@
 "use client"
 import { useToast } from "@/components/ui/use-toast"
-import axios from "axios"
-import { Product } from "product"
 import { FC, useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
-import ProductCard from "@/components/ProductCard"
-import { getOrders, getProducts } from "@/services/product"
+import { getOrders } from "@/services/product"
 
 interface pageProps {}
 

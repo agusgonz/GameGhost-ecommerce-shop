@@ -1,6 +1,5 @@
 "use client"
 import { useToast } from "@/components/ui/use-toast"
-import axios from "axios"
 import { Product } from "product"
 import { FC, useEffect, useState } from "react"
 import { useSession } from "next-auth/react"

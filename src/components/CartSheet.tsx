@@ -1,18 +1,15 @@
 "use client"
-import { FC, ReactNode, Suspense } from "react"
+import { FC, ReactNode } from "react"
 import {
 	Sheet,
 	SheetClose,
 	SheetContent,
 	SheetDescription,
-	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
 } from "./ui/Sheet"
 import { Button } from "./ui/Button"
-import { Label } from "./ui/Label"
-import { Input } from "./ui/Input"
 import ProductCard from "./ProductCard"
 import React, { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
@@ -22,7 +19,7 @@ import {
 } from "@/services/product"
 import { toast } from "@/components/ui/use-toast"
 import { Product } from "product"
-import { Check, ShoppingCart } from "lucide-react"
+import { ShoppingCart } from "lucide-react"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
 import {

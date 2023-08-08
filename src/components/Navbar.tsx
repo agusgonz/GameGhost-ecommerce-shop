@@ -1,7 +1,7 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Link from "next/link"
-import { Button, buttonVariants } from "./ui/Button"
+import { Button } from "./ui/Button"
 import { signOut } from "next-auth/react"
 import {
 	Ghost,

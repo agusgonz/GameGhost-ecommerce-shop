@@ -4,7 +4,6 @@ import { Ubuntu } from "next/font/google"
 import Modal from "@/components/Modals"
 import AuthProvider from "@/provider/AuthProvider"
 import ReduxProvider from "@/provider/ReduxProvider"
-import { Suspense } from "react"
 import { Toaster } from "@/components/ui/Toaster"
 
 const ubuntu = Ubuntu({

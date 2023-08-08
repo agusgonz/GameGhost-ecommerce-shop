@@ -8,8 +8,6 @@ import { Review } from "product"
 import { FC } from "react"
 import AvatarIcon from "../AvatarIcon"
 import { Star } from "lucide-react"
-import { Button } from "../ui/Button"
-import { Textarea } from "../ui/Textarea"
 import RateSection from "./RateSection"
 
 interface InfoTabsProps {

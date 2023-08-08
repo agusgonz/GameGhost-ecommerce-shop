@@ -1,15 +1,9 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useSession } from "next-auth/react"
-import axios from "axios"
-
-import { Product } from "product"
-import { Button } from "@/components/ui/Button"
-import { useToast } from "@/components/ui/use-toast"
 import Loading from "@/components/Loading"
 import UnauthenticatedFrame from "@/components/UnauthenticatedFrame"
 import AvatarIcon from "@/components/AvatarIcon"
-import ProductCard from "@/components/ProductCard"
 import Link from "next/link"
 
 export default function ProfileLayout({

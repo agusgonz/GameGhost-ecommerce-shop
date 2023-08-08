@@ -5,30 +5,15 @@ import AddToLikedButton from "@/components/ProductPage/AddToLikedButton"
 import ImageCarousel from "@/components/ProductPage/ImageCarousel"
 import InfoTabs from "@/components/ProductPage/InfoTabs"
 import RatePrev from "@/components/ProductPage/RatePrev"
-import { Button } from "@/components/ui/Button"
-import {
-	Tabs,
-	TabsContent,
-	TabsList,
-	TabsTrigger,
-} from "@/components/ui/Tabs"
 import { useToast } from "@/components/ui/use-toast"
 import { useWindowSize } from "@/hooks/useWindowSize"
 import {
 	addProductReview,
-	addProductToCart,
 	getProduct,
 } from "@/services/product"
-import {
-	Heart,
-	Plus,
-	ShoppingCart,
-	Star,
-} from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { Product } from "product"
-import { FC, Suspense, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 
 interface pageProps {
 	params: { id: string }

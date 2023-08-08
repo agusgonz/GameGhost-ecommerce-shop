@@ -1,32 +1,15 @@
 "use client"
-import React, {
-	FormEvent,
-	Suspense,
-	useEffect,
-	useState,
-} from "react"
+import React, { FormEvent, useState } from "react"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
-import { open } from "@/store/slices/isModalOpen"
 import Loading from "@/components/Loading"
-import Link from "next/link"
-import {
-	Button,
-	buttonVariants,
-} from "@/components/ui/Button"
+import { Button } from "@/components/ui/Button"
 import UnauthenticatedFrame from "@/components/UnauthenticatedFrame"
-import { Input } from "@/components/ui/Input"
-import Image from "next/image"
-import axios, { AxiosError } from "axios"
 import { Label } from "@/components/ui/Label"
-import { Textarea } from "@/components/ui/Textarea"
 import { useToast } from "@/components/ui/use-toast"
 import Spinner from "@/components/Spinner"
 import { createProduct } from "@/services/product"
-import { CategoryCombobox } from "@/components/CategoryCombobox"
-
-import { Check, ChevronsUpDown, Upload } from "lucide-react"
 
 import AddImageButton from "@/components/CreatePage/AddImageButton"
 import InputLabel from "@/components/CreatePage/InputLabel"
@@ -40,6 +23,7 @@ import {
 	categoryList,
 } from "@/utils/constants"
 import CategoryPopover from "@/components/CreatePage/CategoryPopover"
+import { AxiosError } from "axios"
 
 export interface ImageData {
 	id: string

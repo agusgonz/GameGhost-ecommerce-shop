@@ -2,16 +2,7 @@ import CategorySection from "@/components/CategorySection"
 import CircleContainer from "@/components/CategorySection/CircleContainer"
 import IconsCarousel from "@/components/IconsCarousel"
 import WelcomeUser from "@/components/WelcomeUser"
-import { getAuthSession } from "@/libs/auth-options"
-import {
-	ChevronsDown,
-	CornerRightDown,
-	Gamepad2,
-	Ghost,
-	MoveUpRight,
-	Plus,
-	Sparkles,
-} from "lucide-react"
+import { CornerRightDown, MoveUpRight } from "lucide-react"
 import { Libre_Franklin } from "next/font/google"
 import Link from "next/link"
 

@@ -2,7 +2,6 @@ import { getAuthSession } from "@/libs/auth-options"
 import cloudinary from "@/libs/cloudinary"
 import prisma from "@/libs/prisma"
 import { NextRequest, NextResponse } from "next/server"
-import { ProductImage } from "product"
 
 export async function POST(request: NextRequest) {
 	const {

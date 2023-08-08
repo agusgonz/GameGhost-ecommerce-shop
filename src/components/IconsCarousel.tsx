@@ -1,15 +1,12 @@
 "use client"
 import {
 	Camera,
-	Dices,
 	Gamepad2,
 	Ghost,
 	Headphones,
 	Monitor,
 	Printer,
 	Smartphone,
-	Tv,
-	Webcam,
 } from "lucide-react"
 import { FC } from "react"
 import Slider from "react-slick"

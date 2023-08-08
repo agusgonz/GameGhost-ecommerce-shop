@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { ProductImage } from "product"
 import { FC } from "react"
 import Slider from "react-slick"
 

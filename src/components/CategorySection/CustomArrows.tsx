@@ -2,7 +2,6 @@ import {
 	ArrowLeftCircle,
 	ArrowRightCircle,
 } from "lucide-react"
-import { FC } from "react"
 
 export function CustomNextArrow(props: any) {
 	const { onClick, style, className } = props
