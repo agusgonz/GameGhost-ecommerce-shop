@@ -60,6 +60,8 @@ const addProductReview = ({
 const buyProductsInCart = () =>
 	axios.post("/api/order/create")
 
+const getOrders = () => axios.get("/api/order/getorders")
+
 export {
 	getProduct,
 	getProducts,
@@ -70,4 +72,5 @@ export {
 	getCategories,
 	addProductReview,
 	buyProductsInCart,
+	getOrders,
 }
