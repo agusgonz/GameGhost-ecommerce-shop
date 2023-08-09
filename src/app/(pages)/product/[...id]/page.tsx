@@ -12,7 +12,7 @@ import {
 	getProduct,
 } from "@/services/product"
 import Link from "next/link"
-import { Product } from "product"
+import { Product } from "store"
 import { FC, useEffect, useState } from "react"
 
 interface pageProps {

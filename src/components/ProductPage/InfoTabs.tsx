@@ -4,7 +4,7 @@ import {
 	TabsTrigger,
 	TabsContent,
 } from "@radix-ui/react-tabs"
-import { Review } from "product"
+import { Review } from "store"
 import { FC } from "react"
 import AvatarIcon from "../AvatarIcon"
 import { Star } from "lucide-react"

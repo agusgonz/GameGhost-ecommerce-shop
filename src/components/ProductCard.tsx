@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Product } from "product"
+import { Product } from "store"
 import { FC } from "react"
 import { Button } from "./ui/Button"
 import { Trash2, X } from "lucide-react"

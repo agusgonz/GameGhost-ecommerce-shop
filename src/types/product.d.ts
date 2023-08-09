@@ -1,4 +1,4 @@
-declare module "product" {
+declare module "store" {
 	interface Product {
 		id: string
 		description: string

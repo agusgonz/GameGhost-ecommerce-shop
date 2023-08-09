@@ -2,7 +2,7 @@
 import SliderProducts from "@/components/CategorySection/SliderContainer"
 import { toast } from "@/components/ui/use-toast"
 import { getCategories } from "@/services/product"
-import { Category } from "product"
+import { Category } from "store"
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 import Loading from "@/components/Loading"

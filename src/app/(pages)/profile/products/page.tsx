@@ -1,6 +1,6 @@
 "use client"
 import { useToast } from "@/components/ui/use-toast"
-import { Product } from "product"
+import { Product } from "store"
 import { FC, useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 import ProductCard from "@/components/ProductCard"

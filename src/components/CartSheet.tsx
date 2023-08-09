@@ -18,7 +18,7 @@ import {
 	getProductsInCart,
 } from "@/services/product"
 import { toast } from "@/components/ui/use-toast"
-import { Product } from "product"
+import { Product } from "store"
 import { ShoppingCart } from "lucide-react"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
