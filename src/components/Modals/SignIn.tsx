@@ -45,12 +45,12 @@ const SignIn = ({}) => {
 	}
 
 	return (
-		<div>
-			<h1>Sign In</h1>
+		<div className="flex flex-col gap-4">
+			<h1 className="text-xl text-center">Sign In</h1>
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(submitHandler)}
-					className="space-y-8"
+					className="space-y-4"
 				>
 					<FormField
 						control={form.control}
@@ -61,8 +61,9 @@ const SignIn = ({}) => {
 								<FormControl>
 									<Input
 										placeholder="your email..."
-										className="text-_darkBlue"
+										className=" bg-_white placeholder:text-_darkBlue text-_darkBlue"
 										{...field}
+										type="email"
 									/>
 								</FormControl>
 
@@ -79,8 +80,9 @@ const SignIn = ({}) => {
 								<FormControl>
 									<Input
 										placeholder="your password..."
-										className="text-_darkBlue"
+										className="placeholder:text-_darkBlue bg-_white text-_darkBlue"
 										{...field}
+										type="password"
 									/>
 								</FormControl>
 
@@ -88,18 +90,23 @@ const SignIn = ({}) => {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit">Submit</Button>
+					<Button
+						type="submit"
+						variant={"custom"}
+					>
+						Submit
+					</Button>
 				</form>
+				<p>
+					New User?{" "}
+					<button
+						onClick={() => dispatch(setSignUpModalTrue())}
+						className="underline"
+					>
+						Sign up
+					</button>
+				</p>
 			</Form>
-			<p>
-				New User?{" "}
-				<button
-					onClick={() => dispatch(setSignUpModalTrue())}
-					className="underline"
-				>
-					Sign up
-				</button>
-			</p>
 		</div>
 	)
 }

@@ -25,9 +25,9 @@ const Modal = ({}) => {
 
 	useEffect(() => {
 		if (isModalOpen) {
-			document.body.style.position = "fixed"
+			document.body.style.overflowY = "hidden"
 		} else {
-			document.body.style.position = ""
+			document.body.style.overflowY = ""
 		}
 	}, [isModalOpen])
 
@@ -41,24 +41,31 @@ const Modal = ({}) => {
 	}
 
 	return (
-		<div className="absolute left-0 top-0 w-full h-screen z-20">
+		<div className="absolute left-0 top-0 w-full h-screen z-20 mx-auto ">
 			<div
-				className="w-full h-full bg-_darkBlue absolute opacity-70"
+				className="w-full h-full bg-_blue/80 absolute opacity-70"
 				onClick={closeModal}
 			></div>
-			<div className="w-full h-full flex justify-center items-center content-center text-white ">
-				<div className="w-2/3 h-auto bg-_green z-40 p-2 rounded-sm">
-					<Button
-						variant={"ghost"}
-						size={"sm"}
-						onClick={closeModal}
-					>
-						<X className="w-6 h-6" />
-					</Button>
+			<div className="w-full h-full flex justify-center items-center content-center  ">
+				<div className="w-full h-full sm:w-2/3 max-w-lg sm:h-auto bg-_darkBlue z-40 p-2 rounded-sm">
+					<div className="flex justify-end">
+						<Button
+							variant={"ghost"}
+							size={"sm"}
+							onClick={closeModal}
+						>
+							<X className="w-6 h-6" />
+						</Button>
+					</div>
 					<div className="p-2">
 						{isSignUpModal ? <SignUp /> : <SignIn />}
 					</div>
-					<AuthButton />
+					<hr className="border-t border-_white my-2" />
+					<div className="p-2 flex  gap-2 flex-wrap">
+						<AuthButton name="google" />
+						<AuthButton name="github" />
+						<AuthButton name="discord" />
+					</div>
 				</div>
 			</div>
 		</div>

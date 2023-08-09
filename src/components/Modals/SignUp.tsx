@@ -47,12 +47,12 @@ const SignUp = ({}) => {
 	}
 
 	return (
-		<div>
-			<h1>Sign Up</h1>
+		<div className="flex flex-col gap-4">
+			<h1 className="text-xl text-center">Sign Up</h1>
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(submitHandler)}
-					className="space-y-8"
+					className="space-y-4"
 				>
 					<FormField
 						control={form.control}
@@ -63,7 +63,7 @@ const SignUp = ({}) => {
 								<FormControl>
 									<Input
 										placeholder="your name..."
-										className="text-_darkBlue"
+										className="placeholder:text-_darkBlue text-_darkBlue  bg-_white"
 										{...field}
 									/>
 								</FormControl>
@@ -81,8 +81,9 @@ const SignUp = ({}) => {
 								<FormControl>
 									<Input
 										placeholder="your email..."
-										className="text-_darkBlue"
+										className="placeholder:text-_darkBlue text-_darkBlue  bg-_white"
 										{...field}
+										type="email"
 									/>
 								</FormControl>
 
@@ -99,8 +100,9 @@ const SignUp = ({}) => {
 								<FormControl>
 									<Input
 										placeholder="your password..."
-										className="text-_darkBlue"
+										className="placeholder:text-_darkBlue text-_darkBlue  bg-_white"
 										{...field}
+										type="password"
 									/>
 								</FormControl>
 
@@ -108,7 +110,12 @@ const SignUp = ({}) => {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit">Submit</Button>
+					<Button
+						type="submit"
+						variant={"custom"}
+					>
+						Submit
+					</Button>
 				</form>
 			</Form>
 			<p>
