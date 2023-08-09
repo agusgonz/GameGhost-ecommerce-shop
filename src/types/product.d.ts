@@ -53,4 +53,24 @@ declare module "store" {
 		}
 		writerId: string
 	}
+
+	interface Order {
+		id: string
+		isPaid: boolean
+		phone: string
+		address: string
+		createdAt: Date
+		updatedAt: Date
+		buyerId: string
+		orderProds: OrderProd[]
+	}
+
+	interface OrderProd {
+		id: string
+		order: Order
+		orderId: string
+		product: Product
+		productId: string
+		sellerId: string
+	}
 }
