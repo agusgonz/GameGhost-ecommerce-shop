@@ -49,15 +49,16 @@ export async function POST(request: NextRequest) {
 			})
 		}
 
-		await prisma.user.update({
+		await prisma.product.updateMany({
 			where: {
-				id: session.user.id,
+				inUserCartId: {
+					has: session.user.id,
+				},
 			},
 			data: {
-				productsInCartIds: undefined,
+				inUserCartId: [],
 			},
 		})
-
 		return new NextResponse("The order has been created", {
 			status: 200,
 		})
