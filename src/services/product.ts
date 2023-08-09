@@ -61,6 +61,8 @@ const buyProductsInCart = () =>
 	axios.post("/api/order/create")
 
 const getOrders = () => axios.get("/api/order/getorders")
+const removeOrder = (id: string) =>
+	axios.delete(`/api/order/remove?id=${id}`)
 
 export {
 	getProduct,
@@ -73,4 +75,5 @@ export {
 	addProductReview,
 	buyProductsInCart,
 	getOrders,
+	removeOrder,
 }

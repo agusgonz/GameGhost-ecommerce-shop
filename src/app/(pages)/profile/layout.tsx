@@ -12,11 +12,10 @@ export default function ProfileLayout({
 	children: React.ReactNode
 }) {
 	const { data: session, status } = useSession()
-	console.log(session)
 
 	if (status == "authenticated") {
 		return (
-			<div className="flex flex-col gap-12 md:grid md:grid-cols-3 md:gap-2">
+			<div className="flex flex-col gap-12 md:grid md:grid-cols-3 md:gap-2 my-2">
 				<div className="w-40  mx-auto flex flex-col gap-12">
 					<div className=" gap-8 flex flex-col justify-center items-center">
 						<figure>
@@ -35,7 +34,7 @@ export default function ProfileLayout({
 						</div>
 					</div>
 					<div className="flex flex-col gap-2 pl-2">
-						<Link href={"/profile/products"}>
+						<Link href={"/profile/orders"}>
 							Orders in progress
 						</Link>
 						<hr className="border-t-1 border-_white" />

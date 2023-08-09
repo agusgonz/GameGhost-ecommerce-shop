@@ -17,7 +17,19 @@ export async function GET(request: NextRequest) {
 		},
 
 		include: {
-			orderProds: true,
+			orderProds: {
+				include: {
+					product: {
+						include: {
+							productImages: {
+								select: {
+									secure_url: true,
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 	})
 
