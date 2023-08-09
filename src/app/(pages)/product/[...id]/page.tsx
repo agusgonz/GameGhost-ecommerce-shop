@@ -37,8 +37,6 @@ const page: FC<pageProps> = ({ params }) => {
 			})
 	}, [])
 
-	// console.log(product)
-
 	const addReviewHandler = (
 		stars: number | undefined,
 		comment: string | undefined
@@ -74,7 +72,7 @@ const page: FC<pageProps> = ({ params }) => {
 	}
 
 	const calculateAvrgStars = () => {
-		if (!product?.reviews) return 0.0
+		if (!product || product.reviews.length == 0) return 0.0
 
 		const stars = product.reviews.map(
 			review => review.stars
@@ -83,7 +81,8 @@ const page: FC<pageProps> = ({ params }) => {
 		const sum = stars.reduce((a, b) => a + b, 0)
 		const avg = sum / stars.length
 
-		return parseFloat(avg.toFixed(1))
+		const result = parseFloat(avg.toFixed(1))
+		return result
 	}
 
 	if (product && windowWidth) {
@@ -110,8 +109,8 @@ const page: FC<pageProps> = ({ params }) => {
 										{product.title}
 									</h1>
 									<RatePrev
-										avrStars={0}
-										quantity={0}
+										avrStars={calculateAvrgStars()}
+										quantity={product.reviews.length}
 									/>
 
 									<div className="text-4xl font-normal">
