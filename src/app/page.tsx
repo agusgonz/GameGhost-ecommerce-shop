@@ -13,7 +13,7 @@ const libreFranklin = Libre_Franklin({
 
 export default function Home() {
 	return (
-		<div className="flex flex-col gap-12">
+		<div className="flex flex-col gap-8 lg:gap-12">
 			<WelcomeUser className="xl:text-2xl " />
 
 			<div className="grid md:grid-cols-2 py-4 ">
