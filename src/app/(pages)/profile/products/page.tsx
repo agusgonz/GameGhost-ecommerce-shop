@@ -30,13 +30,11 @@ const page: FC<pageProps> = ({}) => {
 			<div className="grid lg:grid-cols-2 p-2 gap-2">
 				{products.map(product => {
 					return (
-						<>
-							<ProductCard
-								key={product.id + ""}
-								product={product}
-								includeDescription
-							/>
-						</>
+						<ProductCard
+							key={product.id}
+							product={product}
+							includeDescription
+						/>
 					)
 				})}
 			</div>
