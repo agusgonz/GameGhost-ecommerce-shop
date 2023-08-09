@@ -120,7 +120,7 @@ model Order {
   updatedAt DateTime @updatedAt
 
   //User how create the order
-  buyer   User   @relation(fields: [buyerId], references: [id])
+  buyer   User   @relation(fields: [buyerId], references: [id], onDelete: Cascade)
   buyerId String @db.ObjectId
 
   //Product to order
@@ -130,13 +130,13 @@ model Order {
 model OrderProd {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  order   Order  @relation(fields: [orderId], references: [id])
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId String @db.ObjectId
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String  @db.ObjectId
 
-  seller   User   @relation(fields: [sellerId], references: [id])
+  seller   User   @relation(fields: [sellerId], references: [id], onDelete: Cascade)
   sellerId String @db.ObjectId
 }
 
