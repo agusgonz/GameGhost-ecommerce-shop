@@ -47,7 +47,7 @@ const Modal = ({}) => {
 				onClick={closeModal}
 			></div>
 			<div className="w-full h-full flex justify-center items-center content-center  ">
-				<div className="w-full h-full sm:w-2/3 max-w-lg sm:h-auto bg-_darkBlue z-40 p-2 rounded-sm">
+				<div className="w-full h-full sm:w-2/3 sm:max-w-lg sm:h-auto bg-_darkBlue z-40 p-2 rounded-sm">
 					<div className="flex justify-end">
 						<Button
 							variant={"ghost"}
@@ -58,7 +58,11 @@ const Modal = ({}) => {
 						</Button>
 					</div>
 					<div className="p-2">
-						{isSignUpModal ? <SignUp /> : <SignIn />}
+						{isSignUpModal ? (
+							<SignUp />
+						) : (
+							<SignIn closeModalhandler={closeModal} />
+						)}
 					</div>
 					<hr className="border-t border-_white my-2" />
 					<div className="p-2 flex  gap-2 flex-wrap">

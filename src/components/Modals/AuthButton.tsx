@@ -21,7 +21,7 @@ const AuthButton: FC<AuthButtonProps> = ({
 			size={"lg"}
 			className={cn(
 				className,
-				"border-2 border-_white flex-grow"
+				"border-2 border-_white flex-grow hover:bg-_white hover:text-_darkBlue"
 			)}
 		>
 			{capitalizeString(name)}

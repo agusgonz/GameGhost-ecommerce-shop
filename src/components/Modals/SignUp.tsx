@@ -18,6 +18,7 @@ import axios from "axios"
 
 import { useDispatch } from "react-redux"
 import { setSignUpModalFalse } from "@/store/slices/isSignUpModal"
+import { useToast } from "../ui/use-toast"
 
 const formSchema = z.object({
 	username: z.string().min(4).max(10),
@@ -27,6 +28,8 @@ const formSchema = z.object({
 
 const SignUp = ({}) => {
 	const dispatch = useDispatch()
+
+	const { toast } = useToast()
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -40,9 +43,19 @@ const SignUp = ({}) => {
 	) => {
 		await axios
 			.post("api/register", values)
-			.then(res => alert("Registered!"))
+			.then(res => {
+				toast({
+					description: "User registered",
+					variant: "success",
+				})
+				dispatch(setSignUpModalFalse())
+			})
 			.catch(err =>
-				alert("Something when wrong: " + err.response.data)
+				toast({
+					title: "Something when wrong:",
+					description: err.response.data,
+					variant: "destructive",
+				})
 			)
 	}
 
@@ -114,7 +127,7 @@ const SignUp = ({}) => {
 						type="submit"
 						variant={"custom"}
 					>
-						Submit
+						Create account
 					</Button>
 				</form>
 			</Form>

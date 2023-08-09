@@ -15,14 +15,23 @@ import { Button } from "../ui/Button"
 import { useDispatch } from "react-redux"
 import { setSignUpModalTrue } from "@/store/slices/isSignUpModal"
 import { signIn } from "next-auth/react"
+import React from "react"
+import { useToast } from "../ui/use-toast"
 
+interface SignInProps {
+	closeModalhandler: () => void
+}
 const formSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(4),
 })
 
-const SignIn = ({}) => {
+const SignIn: React.FC<SignInProps> = ({
+	closeModalhandler,
+}) => {
 	const dispatch = useDispatch()
+
+	const { toast } = useToast()
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -36,10 +45,17 @@ const SignIn = ({}) => {
 			redirect: false,
 		}).then(callback => {
 			if (callback?.error) {
-				alert(callback.error)
+				toast({
+					description: callback.error,
+					variant: "destructive",
+				})
 			}
 			if (callback?.ok && !callback.error) {
-				alert("Logged in!")
+				toast({
+					description: "Sign in successfully",
+					variant: "success",
+				})
+				closeModalhandler()
 			}
 		})
 	}
@@ -94,7 +110,7 @@ const SignIn = ({}) => {
 						type="submit"
 						variant={"custom"}
 					>
-						Submit
+						Sign in
 					</Button>
 				</form>
 				<p>
