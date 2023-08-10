@@ -87,7 +87,7 @@ export default function Navbar() {
 										asChild
 										className="hover:cursor-pointer"
 									>
-										<Link href="/profile">
+										<Link href="/profile/orders">
 											<User2 className="mr-2 w-4 h-4" />
 											Profile
 										</Link>
