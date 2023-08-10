@@ -51,7 +51,13 @@ const page: FC<pageProps> = ({}) => {
 	}
 
 	if (orders.length == 0)
-		return <div className="text-center text-lg">You have no orders in progress</div>
+		return (
+			<div className="flex justify-center text-lg">
+				<p className="px-2 border-t border-_white">
+					You have no orders in progress
+				</p>
+			</div>
+		)
 
 	return (
 		<div className="border-2 border-_white  text-_white  rounded-sm">

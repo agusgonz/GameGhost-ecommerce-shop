@@ -36,7 +36,9 @@ const ProductCard: FC<ProductCardProps> = ({
 				</figure>
 				<div className=" w-full gap-2 h-full flex flex-col justify-between">
 					<div className="flex justify-between items-center">
-						<p className="text-lg  ">{product.title}</p>
+						<div className="text-lg  max-h-20  overflow-hidden">
+							{product.title}
+						</div>
 						{isInCart ? (
 							<Button
 								variant={"ghost"}
@@ -52,7 +54,7 @@ const ProductCard: FC<ProductCardProps> = ({
 						) : null}
 					</div>
 					{includeDescription && (
-						<div className="text-ellipsis overflow-hidden text-_green  max-h-24">
+						<div className="text-ellipsis overflow-hidden text-_green  max-h-24 ">
 							<p>{product.description}</p>
 						</div>
 					)}

@@ -5,6 +5,7 @@ import { FC, useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 import ProductCard from "@/components/ProductCard"
 import { getProducts } from "@/services/product"
+import Link from "next/link"
 
 interface pageProps {}
 
@@ -25,9 +26,25 @@ const page: FC<pageProps> = ({}) => {
 				)
 		}
 	}, [status])
+
+	if (products.length == 0)
+		return (
+			<div className="flex justify-center text-lg">
+				<p className="px-2 border-t border-_white">
+					You have no products{" "}
+					<Link
+						href={"product/create"}
+						className="underline text-_green"
+					>
+						Sell now.
+					</Link>
+				</p>
+			</div>
+		)
+
 	return (
 		<div className="border-2 border-_white  text-_white  rounded-sm">
-			<div className="grid lg:grid-cols-2 p-2 gap-2">
+			<div className="grid xl:grid-cols-2 p-2 gap-2 overflow-hidden">
 				{products.map(product => {
 					return (
 						<ProductCard

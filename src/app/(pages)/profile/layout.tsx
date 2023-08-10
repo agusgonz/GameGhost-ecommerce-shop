@@ -5,6 +5,7 @@ import Loading from "@/components/Loading"
 import UnauthenticatedFrame from "@/components/UnauthenticatedFrame"
 import AvatarIcon from "@/components/AvatarIcon"
 import Link from "next/link"
+import OnActiveUnderline from "@/components/OnActiveUnderline"
 
 export default function ProfileLayout({
 	children,
@@ -33,14 +34,19 @@ export default function ProfileLayout({
 							</p>
 						</div>
 					</div>
-					<div className="flex flex-col gap-2 pl-2">
-						<Link href={"/profile/orders"}>
-							Orders in progress
-						</Link>
-						<hr className="border-t-1 border-_white" />
-
-						<Link href={"/profile/products"}>Products</Link>
-						<Link href={"/profile/products"}>Sellings</Link>
+					<div className="flex flex-col gap-2">
+						<OnActiveUnderline
+							name={"Orders"}
+							url={"/profile/orders"}
+						/>
+						<OnActiveUnderline
+							name={"Products"}
+							url={"/profile/products"}
+						/>
+						<OnActiveUnderline
+							name={"Sellings"}
+							url={"/profile/sellings"}
+						/>
 					</div>
 				</div>
 
