@@ -15,16 +15,16 @@ const categories = [
 		src: "/categories/smartphones.jpg",
 	},
 	{
-		name: "Accessories",
-		src: "/categories/accessories.jpg",
+		name: "Games",
+		src: "/categories/games.jpg",
 	},
 	{
-		name: "Accessories1",
-		src: "/categories/accessories.jpg",
+		name: "Audio",
+		src: "/categories/audio.jpg",
 	},
 	{
-		name: "Accessories2",
-		src: "/categories/accessories.jpg",
+		name: "Smart Home Devices",
+		src: "/categories/home.jpg",
 	},
 	{
 		name: "More",

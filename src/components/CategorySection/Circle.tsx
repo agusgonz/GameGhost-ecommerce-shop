@@ -10,7 +10,7 @@ interface CircleProps {
 
 const Circle: FC<CircleProps> = ({ src, name, href }) => {
 	return (
-		<Link href={href}>
+		<div>
 			<div className="w-32 h-32 border-2 border-_green relative rounded-full overflow-hidden flex items-center justify-center">
 				<Image
 					src={src}
@@ -21,7 +21,7 @@ const Circle: FC<CircleProps> = ({ src, name, href }) => {
 				/>
 			</div>
 			<p className="text-center text-sm pt-1">{name}</p>
-		</Link>
+		</div>
 	)
 }
 export default Circle
