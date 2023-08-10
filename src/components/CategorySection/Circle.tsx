@@ -11,7 +11,7 @@ interface CircleProps {
 const Circle: FC<CircleProps> = ({ src, name, href }) => {
 	return (
 		<Link href={href}>
-			<div className="w-32 h-32 border-2 border-_white relative rounded-full overflow-hidden flex items-center justify-center">
+			<div className="w-32 h-32 border-2 border-_green relative rounded-full overflow-hidden flex items-center justify-center">
 				<Image
 					src={src}
 					alt="Category"
@@ -20,9 +20,7 @@ const Circle: FC<CircleProps> = ({ src, name, href }) => {
 					sizes="25vw"
 				/>
 			</div>
-			<p className="text-center text-sm text-_whborder-_white">
-				{name}
-			</p>
+			<p className="text-center text-sm pt-1">{name}</p>
 		</Link>
 	)
 }

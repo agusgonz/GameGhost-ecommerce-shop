@@ -63,8 +63,8 @@ const SliderContainer: FC<SliderContainerProps> = ({
 	}
 
 	return (
-		<div className="w-full mb-8">
-			<h2 className="py-2 text-2xl">{category.name}</h2>
+		<div className="w-full ">
+			<h2 className="pb-8 text-3xl">{category.name}</h2>
 			<div className="px-6">
 				<Slider
 					{...settings}
