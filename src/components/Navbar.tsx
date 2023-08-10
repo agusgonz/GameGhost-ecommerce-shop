@@ -45,7 +45,7 @@ export default function Navbar() {
 				>
 					<Ghost className={itemSize} />
 					<p className="hidden md:inline-block font-normal">
-						Gaming Online Shop
+						GameGhost
 					</p>
 				</Link>
 				{status == "loading" ? (
