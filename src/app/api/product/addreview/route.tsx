@@ -16,7 +16,9 @@ export async function POST(request: NextRequest) {
 				writerId: session?.user.id,
 			},
 		})
-		console.log(review)
+		return new NextResponse("Thank for your review", {
+			status: 200,
+		})
 	} catch (err) {
 		console.log(err)
 		return new NextResponse("There was a problem", {

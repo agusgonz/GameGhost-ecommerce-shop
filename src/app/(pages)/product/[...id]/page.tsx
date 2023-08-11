@@ -58,7 +58,7 @@ const page: FC<pageProps> = ({ params }) => {
 		addProductReview(data)
 			.then(res =>
 				toast({
-					description: "Thank for your review",
+					description: res.data,
 					variant: "success",
 				})
 			)
