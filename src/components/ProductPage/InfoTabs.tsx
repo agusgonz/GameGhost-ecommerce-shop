@@ -71,7 +71,7 @@ const InfoTabs: FC<InfoTabsProps> = ({
 
 					<div className="flex flex-col gap-6 col-span-2 py-4">
 						{reviews.length === 0 ? (
-							<p>There is no reviews</p>
+							<p>There are no reviews</p>
 						) : (
 							reviews.map(review => {
 								let stars = []
