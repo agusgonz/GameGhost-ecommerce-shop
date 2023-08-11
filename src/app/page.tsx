@@ -16,7 +16,7 @@ export default function Home() {
 		<div className="flex flex-col gap-8 lg:gap-12">
 			<WelcomeUser className="xl:text-2xl " />
 
-			<div className="grid md:grid-cols-2 py-4 ">
+			<div className="grid md:grid-cols-2 py-12 ">
 				<div className="flex flex-col gap-5  max-w-[330px] xl:max-w-[520px] md:mx-auto">
 					<Link
 						href={"/product/create"}
