@@ -78,6 +78,7 @@ const SignUp = ({}) => {
 										placeholder="your name..."
 										className="placeholder:text-_darkBlue text-_darkBlue  bg-_white"
 										{...field}
+										autoComplete="off"
 									/>
 								</FormControl>
 
@@ -97,6 +98,7 @@ const SignUp = ({}) => {
 										className="placeholder:text-_darkBlue text-_darkBlue  bg-_white"
 										{...field}
 										type="email"
+										autoComplete="off"
 									/>
 								</FormControl>
 

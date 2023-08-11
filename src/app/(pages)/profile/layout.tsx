@@ -14,6 +14,8 @@ export default function ProfileLayout({
 }) {
 	const { data: session, status } = useSession()
 
+	console.log(session)
+
 	if (status == "authenticated") {
 		return (
 			<div className="flex flex-col gap-12 md:grid md:grid-cols-3 md:gap-2 my-2">

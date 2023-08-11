@@ -80,6 +80,7 @@ const SignIn: React.FC<SignInProps> = ({
 										className=" bg-_white placeholder:text-_darkBlue text-_darkBlue"
 										{...field}
 										type="email"
+										autoComplete="off"
 									/>
 								</FormControl>
 
