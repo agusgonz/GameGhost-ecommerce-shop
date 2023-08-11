@@ -14,5 +14,7 @@ const addProductReview = ({
 		comment: comment,
 		stars: stars,
 	})
+const getReviews = (id: string) =>
+	axios.get(`/api/product/getreviews?id=${id}`)
 
-export { addProductReview }
+export { addProductReview, getReviews }

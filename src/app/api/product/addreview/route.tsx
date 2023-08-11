@@ -4,13 +4,12 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
 	const { productId, comment, stars } = await request.json()
-
 	const session = await getAuthSession()
 
 	try {
 		const review = await prisma.review.create({
 			data: {
-				productId: productId,
+				productId: productId[0],
 				comment: comment,
 				stars: parseInt(stars),
 				writerId: session?.user.id,

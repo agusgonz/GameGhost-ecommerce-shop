@@ -1,7 +1,7 @@
 "use client, useState"
 import { FC, FormEvent, useState } from "react"
-import { Textarea } from "../ui/Textarea"
-import { Button } from "../ui/Button"
+import { Textarea } from "../../ui/Textarea"
+import { Button } from "../../ui/Button"
 import { Star } from "lucide-react"
 
 interface RateSectionProps {
@@ -15,7 +15,9 @@ const RateSection: FC<RateSectionProps> = ({
 	addReviewHandler,
 }) => {
 	const [stars, setStars] = useState<number>()
-	const [comment, setComment] = useState<string>()
+	const [comment, setComment] = useState<string>("")
+
+	console.log(stars, comment)
 
 	let starButtons = []
 
@@ -40,6 +42,8 @@ const RateSection: FC<RateSectionProps> = ({
 	const submitHandler = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		addReviewHandler(stars, comment)
+		setStars(undefined)
+		setComment("")
 	}
 
 	return (
@@ -53,6 +57,7 @@ const RateSection: FC<RateSectionProps> = ({
 			<Textarea
 				onChange={e => setComment(e.target.value)}
 				placeholder="Add a comment..."
+				value={comment}
 			/>
 			<Button variant={"custom"}>Rate this product</Button>
 		</form>

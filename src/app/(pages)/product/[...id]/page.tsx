@@ -3,7 +3,7 @@ import Loading from "@/components/Loading"
 import AddToCartButton from "@/components/ProductPage/AddToCartButton"
 import AddToLikedButton from "@/components/ProductPage/AddToLikedButton"
 import ImageCarousel from "@/components/ProductPage/ImageCarousel"
-import InfoTabs from "@/components/ProductPage/InfoTabs"
+
 import RatePrev from "@/components/ProductPage/RatePrev"
 import { useToast } from "@/components/ui/use-toast"
 import { useWindowSize } from "@/hooks/useWindowSize"
@@ -11,7 +11,8 @@ import { getProduct } from "@/services/product"
 import Link from "next/link"
 import { Product } from "store"
 import { FC, useEffect, useState } from "react"
-import { addProductReview } from "@/services/review"
+
+import InfoTabs from "@/components/ProductPage/InfoTabs"
 
 interface pageProps {
 	params: { id: string }
@@ -34,40 +35,6 @@ const page: FC<pageProps> = ({ params }) => {
 				setProductError(err.response.data)
 			})
 	}, [])
-
-	const addReviewHandler = (
-		stars: number | undefined,
-		comment: string | undefined
-	) => {
-		if (!product || !stars || !comment) {
-			toast({
-				title: "Select an star and add a comment before",
-				variant: "advise",
-			})
-			return
-		}
-
-		const data = {
-			stars,
-			comment,
-			productId: product.id,
-		}
-
-		addProductReview(data)
-			.then(res =>
-				toast({
-					description: res.data,
-					variant: "success",
-				})
-			)
-			.catch(err => {
-				toast({
-					description: err.response.data,
-					variant: "destructive",
-				})
-				setProductError(err.response.data)
-			})
-	}
 
 	const calculateAvrgStars = () => {
 		if (!product || product.reviews.length == 0) return 0.0
@@ -177,8 +144,7 @@ const page: FC<pageProps> = ({ params }) => {
 				)}
 				<InfoTabs
 					description={product.description}
-					reviews={product.reviews}
-					addReviewHandler={addReviewHandler}
+					productId={params.id}
 				/>
 			</>
 		)

@@ -6,23 +6,21 @@ export async function GET(request: NextRequest) {
 	const id = searchParams.get("id")
 
 	if (id) {
-		const product = await prisma.product.findUnique({
+		const reviews = await prisma.review.findMany({
 			where: {
-				id: id,
+				productId: id,
 			},
 			include: {
-				productImages: true,
-				category: true,
-				reviews: true,
-				questionsAnswers: true,
+				writer: {
+					select: {
+						image: true,
+						name: true,
+					},
+				},
 			},
 		})
-		if (!product) {
-			return new NextResponse("The product do not exist", {
-				status: 404,
-			})
-		}
-		return NextResponse.json(product)
+
+		return NextResponse.json(reviews)
 	} else {
 		return new NextResponse(
 			"You have to query a product id",
