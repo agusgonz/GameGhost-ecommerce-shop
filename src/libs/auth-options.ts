@@ -17,7 +17,6 @@ export const authOptions: NextAuthOptions = {
 				password: { label: "Password", type: "text" },
 			},
 			authorize: async function (credentials) {
-				console.log(credentials)
 				if (!credentials?.email || !credentials.password) {
 					throw new Error("Check all fields")
 				}
