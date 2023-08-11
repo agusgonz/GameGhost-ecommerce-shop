@@ -9,12 +9,12 @@ const addProductReview = ({
 	stars: number
 	productId: string
 }) =>
-	axios.post("/api/product/addreview", {
+	axios.post("/api/review/add", {
 		productId: productId,
 		comment: comment,
 		stars: stars,
 	})
 const getReviews = (id: string) =>
-	axios.get(`/api/product/getreviews?id=${id}`)
+	axios.get(`/api/review/getreviews?id=${id}`)
 
 export { addProductReview, getReviews }
