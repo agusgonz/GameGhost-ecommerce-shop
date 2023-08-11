@@ -148,7 +148,7 @@ model Review {
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String  @db.ObjectId
 
-  writer   User   @relation(fields: [writerId], references: [id])
+  writer   User   @relation(fields: [writerId], references: [id], onDelete: Cascade)
   writerId String @db.ObjectId
 }
 
