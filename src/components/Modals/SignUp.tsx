@@ -42,7 +42,7 @@ const SignUp = ({}) => {
 		values: z.infer<typeof formSchema>
 	) => {
 		await axios
-			.post("api/register", values)
+			.post("/api/register", values)
 			.then(res => {
 				toast({
 					description: "User registered",
