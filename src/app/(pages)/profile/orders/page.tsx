@@ -2,7 +2,7 @@
 import { useToast } from "@/components/ui/use-toast"
 import { FC, useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
-import { getOrders, removeOrder } from "@/services/product"
+import { getOrders, removeOrder } from "@/services/order"
 import { Order } from "store"
 import Spinner from "@/components/Spinner"
 import { ChevronRight } from "lucide-react"

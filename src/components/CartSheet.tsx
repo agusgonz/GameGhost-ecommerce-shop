@@ -16,7 +16,7 @@ import { useSession } from "next-auth/react"
 import {
 	buyProductsInCart,
 	getProductsInCart,
-} from "@/services/product"
+} from "@/services/cart"
 import { toast } from "@/components/ui/use-toast"
 import { Product } from "store"
 import { ShoppingCart } from "lucide-react"

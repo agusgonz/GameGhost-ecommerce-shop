@@ -5,7 +5,7 @@ import { FC } from "react"
 import { Button } from "./ui/Button"
 import { Trash2, X } from "lucide-react"
 import { SheetClose } from "./ui/Sheet"
-import { removeProductFromCart } from "@/services/product"
+import { removeProductFromCart } from "@/services/cart"
 import { reloadCart } from "@/store/slices/isReloadCartNeeded"
 import { useDispatch } from "react-redux"
 

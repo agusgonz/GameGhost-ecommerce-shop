@@ -7,13 +7,11 @@ import InfoTabs from "@/components/ProductPage/InfoTabs"
 import RatePrev from "@/components/ProductPage/RatePrev"
 import { useToast } from "@/components/ui/use-toast"
 import { useWindowSize } from "@/hooks/useWindowSize"
-import {
-	addProductReview,
-	getProduct,
-} from "@/services/product"
+import { getProduct } from "@/services/product"
 import Link from "next/link"
 import { Product } from "store"
 import { FC, useEffect, useState } from "react"
+import { addProductReview } from "@/services/review"
 
 interface pageProps {
 	params: { id: string }

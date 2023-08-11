@@ -1,7 +1,7 @@
 "use client"
 import SliderProducts from "@/components/CategorySection/SliderContainer"
 import { toast } from "@/components/ui/use-toast"
-import { getCategories } from "@/services/product"
+import { getCategories } from "@/services/category"
 import { Category } from "store"
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
