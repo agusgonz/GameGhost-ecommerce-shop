@@ -27,6 +27,7 @@ import {
 	reloadCart,
 } from "@/store/slices/isReloadCartNeeded"
 import { useDispatch } from "react-redux"
+import { useRouter } from "next/navigation"
 
 interface CartSheetProps {
 	children: ReactNode
@@ -35,6 +36,8 @@ interface CartSheetProps {
 const CartSheet: FC<CartSheetProps> = ({ children }) => {
 	const [products, setProducts] = useState<Product[]>()
 	const { data: session, status } = useSession()
+
+	const router = useRouter()
 
 	const isReloadCartNeeded = useSelector(
 		(state: RootState) => state.isReloadCartNeeded.value
@@ -66,6 +69,8 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 					description: res.data,
 					variant: "success",
 				})
+				dispatch(reloadCart())
+				router.push("/profile/orders")
 			})
 			.catch(err =>
 				toast({
@@ -73,7 +78,6 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 					variant: "destructive",
 				})
 			)
-		dispatch(reloadCart())
 	}
 
 	return (
@@ -118,10 +122,9 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 						<p className="text-2xl">
 							{" "}
 							$
-							{products?.reduce(
-								(acc, cur) => acc + cur.price,
-								0
-							)}
+							{products
+								?.reduce((acc, cur) => acc + cur.price, 0)
+								?.toFixed(2)}
 						</p>
 					</div>
 					<Button
