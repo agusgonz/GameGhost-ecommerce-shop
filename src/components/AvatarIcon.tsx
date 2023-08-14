@@ -25,11 +25,17 @@ const AvatarIcon: FC<AvatarIconProps> = ({
 				isBig ? "h-40 w-40" : "h-6 w-6"
 			} border-2 border-_blue bg-_blue`}
 		>
-			{ !imageLoaded && <div className="w-full h-full flex items-center justify-center"><Spinner/></div>}
-			
+			{!imageLoaded && (
+				<div className="w-full h-full flex items-center justify-center">
+					<Spinner />
+				</div>
+			)}
+
 			<AvatarImage
 				src={image ? image : "/default.jpg"}
-				className={`object-cover ${imageLoaded ? "w-full " : "w-[1px] h-[1px]"}`}
+				className={`object-cover ${
+					imageLoaded ? "w-full " : "w-[1px] h-[1px]"
+				}`}
 				onLoad={() => setImageLoaded(true)}
 			/>
 		</Avatar>

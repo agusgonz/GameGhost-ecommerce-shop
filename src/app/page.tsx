@@ -1,5 +1,6 @@
 import CategorySection from "@/components/CategorySection"
 import CircleContainer from "@/components/CategorySection/CircleContainer"
+import FadeInAnimation from "@/components/FadeInAnimation"
 import IconsCarousel from "@/components/IconsCarousel"
 import WelcomeUser from "@/components/WelcomeUser"
 import { CornerRightDown, MoveUpRight } from "lucide-react"
@@ -43,9 +44,9 @@ export default function Home() {
 				</div>
 			</div>
 
-			<hr className="border-b border-_green" />
-			<CircleContainer />
-			<hr className="border-b border-_green" />
+			<FadeInAnimation>
+				<CircleContainer />
+			</FadeInAnimation>
 
 			<CategorySection />
 		</div>

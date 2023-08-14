@@ -6,6 +6,7 @@ import { Category } from "store"
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 import Loading from "@/components/Loading"
+import FadeInAnimation from "../FadeInAnimation"
 
 export default function CategorySection() {
 	const { data: session, status } = useSession()
@@ -22,18 +23,13 @@ export default function CategorySection() {
 			})
 	}, [])
 
-	if (status == "loading") {
-		return <Loading />
-	}
-
 	return (
 		<>
 			{categories?.map((category: Category) => {
 				return (
-					<SliderProducts
-						key={category.id}
-						category={category}
-					/>
+					<FadeInAnimation key={category.id}>
+						<SliderProducts category={category} />
+					</FadeInAnimation>
 				)
 			})}
 		</>
