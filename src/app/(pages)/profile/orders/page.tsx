@@ -9,6 +9,7 @@ import { ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import Loading from "@/components/Loading"
+import FadeInAnimation from "@/components/FadeInAnimation"
 
 interface pageProps {}
 
@@ -64,88 +65,98 @@ const page: FC<pageProps> = ({}) => {
 
 	if (orders.length == 0)
 		return (
-			<div className="flex justify-center text-lg">
-				<p className="px-2 border-t border-_white">
-					You have no orders in progress
-				</p>
-			</div>
+			<FadeInAnimation>
+				<div className="flex justify-center text-lg">
+					<p className="px-2 border-t border-_white">
+						You have no orders in progress
+					</p>
+				</div>
+			</FadeInAnimation>
 		)
 
 	return (
-		<div className="border-2 border-_white  text-_white  rounded-sm">
-			<div className="p-2">
-				{orders.map((order: Order, i) => {
-					return (
-						<div key={order.id}>
-							<div className="flex flex-col gap-2">
-								<div className="flex justify-between items-center">
-									<p className="text-2xl">Order {i + 1}</p>
-									<Link
-										href={`/profile/orders/${order.id}`}
-									>
-										<ChevronRight className="w-8 h-8" />
-									</Link>
-								</div>
-								<div className="w-full h-3 border-2 border-_green bg-_green rounded-full relative overflow-hidden my-2">
-									<div className="absolute w-1/12 h-full bg-_blue  animate-pulse"></div>
-								</div>
-								<p className=" ">
-									<span className="text-lg">State:</span>{" "}
-									confirmation
-								</p>
-								<p className=" ">
-									<span className="text-lg">Shipping:</span>{" "}
-									{order.address || "no address"}
-								</p>
-								<p className=" text-_green">
-									<span className="text-lg">Payment:</span>{" "}
-									{order.isPaid ? "Yes" : "No"}
-								</p>
+		<FadeInAnimation>
+			<div className="border-2 border-_white  text-_white  rounded-sm">
+				<div className="p-2">
+					{orders.map((order: Order, i) => {
+						return (
+							<div key={order.id}>
+								<div className="flex flex-col gap-2">
+									<div className="flex justify-between items-center">
+										<p className="text-2xl">
+											Order {i + 1}
+										</p>
+										<Link
+											href={`/profile/orders/${order.id}`}
+										>
+											<ChevronRight className="w-8 h-8" />
+										</Link>
+									</div>
+									<div className="w-full h-3 border-2 border-_green bg-_green rounded-full relative overflow-hidden my-2">
+										<div className="absolute w-1/12 h-full bg-_blue  animate-pulse"></div>
+									</div>
+									<p className=" ">
+										<span className="text-lg">State:</span>{" "}
+										confirmation
+									</p>
+									<p className=" ">
+										<span className="text-lg">
+											Shipping:
+										</span>{" "}
+										{order.address || "no address"}
+									</p>
+									<p className=" text-_green">
+										<span className="text-lg">
+											Payment:
+										</span>{" "}
+										{order.isPaid ? "Yes" : "No"}
+									</p>
 
-								<div className="flex gap-2 flex-wrap justify-start ">
-									{order.orderProds.map(product => {
-										return (
-											<Link
-												href={
-													"/product/" + product.product.id
-												}
-												key={product.id}
-												className="w-[100px] h-[100px]  border border-_blue bg-_blue p-1 flex justify-center items-center"
-											>
-												<Image
-													alt="Product Image"
-													className="object-contain "
-													src={
-														product.product.productImages[0]
-															.secure_url
+									<div className="flex gap-2 flex-wrap justify-start ">
+										{order.orderProds.map(product => {
+											return (
+												<Link
+													href={
+														"/product/" + product.product.id
 													}
-													width={80}
-													height={80}
-												/>
-											</Link>
-										)
-									})}
+													key={product.id}
+													className="w-[100px] h-[100px]  border border-_blue bg-_blue p-1 flex justify-center items-center"
+												>
+													<Image
+														alt="Product Image"
+														className="object-contain "
+														src={
+															product.product
+																.productImages[0].secure_url
+														}
+														width={80}
+														height={80}
+													/>
+												</Link>
+											)
+										})}
+									</div>
+									<div>
+										<button
+											onClick={() =>
+												removeOrderHandler(order.id)
+											}
+											className="text-sm underline text-_white/70"
+										>
+											Cancel order
+										</button>
+									</div>
 								</div>
-								<div>
-									<button
-										onClick={() =>
-											removeOrderHandler(order.id)
-										}
-										className="text-sm underline text-_white/70"
-									>
-										Cancel order
-									</button>
-								</div>
-							</div>
 
-							{i + 1 == orders.length ? null : (
-								<hr className="border-t-2 border-_white my-2" />
-							)}
-						</div>
-					)
-				})}
+								{i + 1 == orders.length ? null : (
+									<hr className="border-t-2 border-_white my-2" />
+								)}
+							</div>
+						)
+					})}
+				</div>
 			</div>
-		</div>
+		</FadeInAnimation>
 	)
 }
 export default page
