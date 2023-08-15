@@ -1,7 +1,8 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
 import { Product } from "store"
-import { FC } from "react"
+import { FC, useState } from "react"
 import { Button } from "./ui/Button"
 import { Trash2, X } from "lucide-react"
 import { SheetClose } from "./ui/Sheet"
@@ -21,6 +22,9 @@ const ProductCard: FC<ProductCardProps> = ({
 	isInCart,
 }) => {
 	const dispatch = useDispatch()
+
+	const [removeButtonLoading, setRemoveButtonLoading] =
+		useState(false)
 
 	return (
 		<div className="">
@@ -44,10 +48,15 @@ const ProductCard: FC<ProductCardProps> = ({
 								variant={"ghost"}
 								size={"sm"}
 								onClick={() => {
+									setRemoveButtonLoading(true)
 									removeProductFromCart(product.id).then(
-										() => dispatch(reloadCart())
+										() => {
+											dispatch(reloadCart())
+											setRemoveButtonLoading(false)
+										}
 									)
 								}}
+								loading={removeButtonLoading}
 							>
 								<Trash2 className="w-4 h-4 text-_green" />
 							</Button>
