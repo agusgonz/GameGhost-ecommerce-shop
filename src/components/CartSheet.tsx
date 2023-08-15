@@ -37,6 +37,7 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 	const [products, setProducts] = useState<Product[]>()
 	const { data: session, status } = useSession()
 	const [buttonLoading, setButtonLoading] = useState(false)
+	const [isSheetOpen, setSheetOpen] = useState(false)
 
 	const router = useRouter()
 
@@ -74,6 +75,7 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 				dispatch(reloadCart())
 				router.push("/profile/orders")
 				setButtonLoading(false)
+				setSheetOpen(false)
 			})
 			.catch(err => {
 				toast({
@@ -81,11 +83,15 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 					variant: "destructive",
 				})
 				setButtonLoading(false)
+				setSheetOpen(false)
 			})
 	}
 
 	return (
-		<Sheet>
+		<Sheet
+			open={isSheetOpen}
+			onOpenChange={setSheetOpen}
+		>
 			<SheetTrigger asChild>
 				<div className="relative">
 					{children}
@@ -102,8 +108,8 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 						Cart
 						<ShoppingCart className="w-5 h-5" />
 					</SheetTitle>
-					<SheetDescription className="text-_green">
-						Here are all the products you added to the cart
+					<SheetDescription className="text-_green text-center">
+						Here are all the products you add to the cart
 					</SheetDescription>
 				</SheetHeader>
 				<div className="flex flex-col gap-2 pt-2 px-2 overflow-y-auto overflow-x-hidden flex-grow border-2 border-_white rounded-sm">
