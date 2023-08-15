@@ -116,10 +116,12 @@ const ProfileInfo: FC<ProfileInfoProps> = ({
 								nameEditing ? "!w-full " : "!w-0 !h-0"
 							}`}
 							onBlur={() => {
-								if (newName == "") setNewName(name)
-
+								if (newName == "") {
+									setNewName(name)
+								} else if (newName != name) {
+									saveChanges()
+								}
 								setNameEditing(false)
-								saveChanges()
 							}} //When input lost focus
 						/>
 
