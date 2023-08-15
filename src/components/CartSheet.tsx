@@ -36,6 +36,7 @@ interface CartSheetProps {
 const CartSheet: FC<CartSheetProps> = ({ children }) => {
 	const [products, setProducts] = useState<Product[]>()
 	const { data: session, status } = useSession()
+	const [buttonLoading, setButtonLoading] = useState(false)
 
 	const router = useRouter()
 
@@ -63,6 +64,7 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 	}, [status, isReloadCartNeeded])
 
 	const buyProductsInCartHandler = () => {
+		setButtonLoading(true)
 		buyProductsInCart()
 			.then(res => {
 				toast({
@@ -71,13 +73,15 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 				})
 				dispatch(reloadCart())
 				router.push("/profile/orders")
+				setButtonLoading(false)
 			})
-			.catch(err =>
+			.catch(err => {
 				toast({
 					description: err.response.data,
 					variant: "destructive",
 				})
-			)
+				setButtonLoading(false)
+			})
 	}
 
 	return (
@@ -132,6 +136,7 @@ const CartSheet: FC<CartSheetProps> = ({ children }) => {
 						size={"lg"}
 						className={"text-lg font-normal bg-_comodin"}
 						onClick={buyProductsInCartHandler}
+						loading={buttonLoading}
 					>
 						Order now
 					</Button>

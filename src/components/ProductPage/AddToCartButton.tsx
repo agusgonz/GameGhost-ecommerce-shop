@@ -1,4 +1,5 @@
-import React, { FC } from "react"
+"use client"
+import React, { FC, useState } from "react"
 import { Button } from "../ui/Button"
 import { ShoppingCart } from "lucide-react"
 import { cn } from "@/utils/utils"
@@ -20,13 +21,17 @@ const AddToCartButton: FC<AddToCartButtonProps> = ({
 }) => {
 	const dispatch = useDispatch()
 
+	const [buttonLoading, setButtonLoading] = useState(false)
+
 	const addProductToCartHandler = () => {
+		setButtonLoading(true)
 		addProductToCart(productId)
 			.then(res => {
 				toast({
 					description: res.data,
 					variant: "success",
 				})
+				setButtonLoading(false)
 				dispatch(reloadCart())
 			})
 			.catch(err => {
@@ -34,6 +39,7 @@ const AddToCartButton: FC<AddToCartButtonProps> = ({
 					description: err.response.data,
 					variant: "destructive",
 				})
+				setButtonLoading(false)
 				dispatch(open())
 			})
 	}
@@ -49,6 +55,7 @@ const AddToCartButton: FC<AddToCartButtonProps> = ({
 			onClick={() => {
 				addProductToCartHandler()
 			}}
+			loading={buttonLoading}
 		>
 			Add to cart
 			<ShoppingCart className=" w-4 ml-2 h-4" />
