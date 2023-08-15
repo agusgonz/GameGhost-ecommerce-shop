@@ -8,27 +8,31 @@ import Spinner from "@/components/Spinner"
 import { ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import Loading from "@/components/Loading"
 
 interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
 	const [orders, setOrders] = useState([])
 	const [refetch, setRefetch] = useState(false)
+	const [loading, setLoading] = useState(true)
 	const { toast } = useToast()
 	const { data: session, status } = useSession()
-
-	console.log(orders)
 
 	useEffect(() => {
 		if (status == "authenticated") {
 			getOrders()
-				.then(res => setOrders(res.data))
-				.catch(err =>
+				.then(res => {
+					setOrders(res.data)
+					setLoading(false)
+				})
+				.catch(err => {
 					toast({
 						description: err.response.data,
 						variant: "destructive",
 					})
-				)
+					setLoading(false)
+				})
 			setRefetch(false)
 		}
 	}, [status, refetch])
@@ -48,6 +52,14 @@ const page: FC<pageProps> = ({}) => {
 					variant: "destructive",
 				})
 			)
+	}
+
+	if (loading) {
+		return (
+			<div className="relative w-full h-full">
+				<Loading />
+			</div>
+		)
 	}
 
 	if (orders.length == 0)

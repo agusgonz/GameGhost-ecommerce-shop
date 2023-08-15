@@ -7,6 +7,7 @@ import AvatarIcon from "@/components/AvatarIcon"
 import Link from "next/link"
 import OnActiveUnderline from "@/components/OnActiveUnderline"
 import ProfileInfo from "@/components/ProfileInfo"
+import FadeInAnimation from "@/components/FadeInAnimation"
 
 export default function ProfileLayout({
 	children,
@@ -18,28 +19,29 @@ export default function ProfileLayout({
 	if (status == "authenticated") {
 		return (
 			<div className="flex flex-col gap-12 md:grid md:grid-cols-3 md:gap-2 my-2">
-				<div className="w-40  mx-auto flex flex-col gap-12">
-					<ProfileInfo
-						image={session.user.image}
-						name={session.user.name}
-						email={session.user.email}
-					/>
-					<div className="flex flex-col gap-2">
-						<OnActiveUnderline
-							name={"Orders"}
-							url={"/profile/orders"}
+				<FadeInAnimation>
+					<div className="w-40  mx-auto flex flex-col gap-12">
+						<ProfileInfo
+							image={session.user.image}
+							name={session.user.name}
+							email={session.user.email}
 						/>
-						<OnActiveUnderline
-							name={"Products"}
-							url={"/profile/products"}
-						/>
-						<OnActiveUnderline
-							name={"Sellings"}
-							url={"/profile/sellings"}
-						/>
+						<div className="flex flex-col gap-2">
+							<OnActiveUnderline
+								name={"Orders"}
+								url={"/profile/orders"}
+							/>
+							<OnActiveUnderline
+								name={"Products"}
+								url={"/profile/products"}
+							/>
+							<OnActiveUnderline
+								name={"Sellings"}
+								url={"/profile/sellings"}
+							/>
+						</div>
 					</div>
-				</div>
-
+				</FadeInAnimation>
 				<div className="col-span-2">{children}</div>
 			</div>
 		)

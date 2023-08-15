@@ -13,6 +13,7 @@ import { Product } from "store"
 import { FC, useEffect, useState } from "react"
 
 import InfoTabs from "@/components/ProductPage/InfoTabs"
+import FadeInAnimation from "@/components/FadeInAnimation"
 
 interface pageProps {
 	params: { id: string }
@@ -68,31 +69,33 @@ const page: FC<pageProps> = ({ params }) => {
 									{product.category[0].name}
 								</Link>
 							</div>
-							<div>
-								<div className="border-y-2 border-_blue py-2 flex flex-col gap-2">
-									<h1 className="text-3xl">
-										{product.title}
-									</h1>
-									<RatePrev
-										avrStars={calculateAvrgStars()}
-										quantity={product.reviews.length}
-									/>
+							<FadeInAnimation>
+								<div>
+									<div className="border-y-2 border-_blue py-2 flex flex-col gap-2">
+										<h1 className="text-3xl">
+											{product.title}
+										</h1>
+										<RatePrev
+											avrStars={calculateAvrgStars()}
+											quantity={product.reviews.length}
+										/>
 
-									<div className="text-4xl font-normal">
-										<p>{`$ ${product.price}`}</p>
+										<div className="text-4xl font-normal">
+											<p>{`$ ${product.price}`}</p>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div className="max-w-[400px] max-h-[600px]">
-								<ImageCarousel
-									images={product.productImages}
-									sm
-								/>
-							</div>
-							<div className=" flex gap-1 items-center border-t-2 border-_blue pt-2">
-								<AddToCartButton productId={params.id} />
-								<AddToLikedButton />
-							</div>
+								<div className="max-w-[400px] max-h-[600px]">
+									<ImageCarousel
+										images={product.productImages}
+										sm
+									/>
+								</div>
+								<div className=" flex gap-1 items-center border-t-2 border-_blue pt-2">
+									<AddToCartButton productId={params.id} />
+									<AddToLikedButton />
+								</div>
+							</FadeInAnimation>
 						</div>
 					</div>
 				) : (
@@ -109,43 +112,47 @@ const page: FC<pageProps> = ({ params }) => {
 								{product.category[0].name}
 							</Link>
 						</div>
-						<div className="w-full border-2 h-max border-_blue rounded-sm flex">
-							<div className="flex-grow p-3 bg-_blue flex items-center justify-center">
-								<div className="w-[440px] max-h-[600px] ">
-									<ImageCarousel
-										images={product.productImages}
+						<FadeInAnimation>
+							<div className="w-full border-2 h-max border-_blue rounded-sm flex">
+								<div className="flex-grow p-3 bg-_blue flex items-center justify-center">
+									<div className="w-[440px] max-h-[600px] ">
+										<ImageCarousel
+											images={product.productImages}
+										/>
+									</div>
+								</div>
+								<div className="w-full h-full flex flex-col gap-3 p-3 ">
+									<h1 className="text-3xl ">
+										{product.title}
+									</h1>
+									<RatePrev
+										avrStars={calculateAvrgStars()}
+										quantity={product.reviews.length}
 									/>
+									<div className="text-4xl font-normal">
+										<p>{`$ ${product.price}`}</p>
+									</div>
+									<div className=" flex gap-1 items-center">
+										<AddToCartButton
+											className="px-5 lg:px-8"
+											productId={params.id}
+										/>
+										<AddToLikedButton />
+									</div>
+									<div>
+										<p>Stock: {product.stock}</p>
+									</div>
 								</div>
 							</div>
-							<div className="w-full h-full flex flex-col gap-3 p-3 ">
-								<h1 className="text-3xl ">
-									{product.title}
-								</h1>
-								<RatePrev
-									avrStars={calculateAvrgStars()}
-									quantity={product.reviews.length}
-								/>
-								<div className="text-4xl font-normal">
-									<p>{`$ ${product.price}`}</p>
-								</div>
-								<div className=" flex gap-1 items-center">
-									<AddToCartButton
-										className="px-5 lg:px-8"
-										productId={params.id}
-									/>
-									<AddToLikedButton />
-								</div>
-								<div>
-									<p>Stock: {product.stock}</p>
-								</div>
-							</div>
-						</div>
+						</FadeInAnimation>
 					</div>
 				)}
-				<InfoTabs
-					description={product.description}
-					productId={params.id}
-				/>
+				<FadeInAnimation>
+					<InfoTabs
+						description={product.description}
+						productId={params.id}
+					/>
+				</FadeInAnimation>
 			</>
 		)
 	} else if (productError) {
