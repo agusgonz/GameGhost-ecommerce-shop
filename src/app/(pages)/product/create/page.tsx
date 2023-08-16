@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/Label"
 import { useToast } from "@/components/ui/use-toast"
 import Spinner from "@/components/Spinner"
 import { createProduct } from "@/services/product"
+import { open } from "@/store/slices/isModalOpen"
 
 import AddImageButton from "@/components/CreatePage/AddImageButton"
 import InputLabel from "@/components/CreatePage/InputLabel"
@@ -311,23 +312,14 @@ export default function Sell() {
 			</div>
 		)
 	}
-	// <div className="lg:block hidden w-full h-full">
-	// 	<div className="w-full h-full relative flex justify-center items-center border-2 border-_green rounded-md">
-	// 		<Image
-	// 			src={images[0].data}
-	// 			alt="Image preview"
-	// 			width={300}
-	// 			height={300}
-	// 			className=""
-	// 		/>
-	// 	</div>
-	// </div>
 
 	if (status == "loading") {
 		return <Loading />
 	}
 
 	if (status == "unauthenticated") {
+		dispatch(open())
+
 		return <UnauthenticatedFrame />
 	}
 }
