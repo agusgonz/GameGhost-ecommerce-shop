@@ -16,8 +16,8 @@ const categories = [
 		src: "/categories/smartphones.jpg",
 	},
 	{
-		name: "Games",
-		src: "/categories/games.jpg",
+		name: "Accessories",
+		src: "/categories/accessories.jpg",
 	},
 	{
 		name: "Audio",
