@@ -41,12 +41,6 @@ const InfoTabs: FC<InfoTabsProps> = ({
 				>
 					Reviews
 				</TabsTrigger>
-				<TabsTrigger
-					value="q&a"
-					className="font-normal flex-grow text-lg rounded-none px-6 data-[state=active]:bg-_blue py-2"
-				>
-					Q & A
-				</TabsTrigger>
 			</TabsList>
 			<TabsContent
 				value="details"
@@ -62,12 +56,6 @@ const InfoTabs: FC<InfoTabsProps> = ({
 				className="p-2"
 			>
 				<ReviewsSection productId={productId} />
-			</TabsContent>
-			<TabsContent
-				value="q&a"
-				className="p-2"
-			>
-				Q & A
 			</TabsContent>
 		</Tabs>
 	)
