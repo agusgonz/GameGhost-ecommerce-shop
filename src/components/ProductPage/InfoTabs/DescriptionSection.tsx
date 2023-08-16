@@ -14,9 +14,9 @@ const DescriptionSection: FC<DescriptionSectionProps> = ({
 	seller,
 }) => {
 	return (
-		<div>
+		<div className="px-2 md:px-0 md:w-5/6 mx-auto">
 			<p className="text-xl pb-1">About this product: </p>
-			<p className="pl-2">{description}</p>
+			<p className="">{description}</p>
 		</div>
 	)
 }
