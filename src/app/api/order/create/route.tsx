@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
 		if (productsInCart.length === 0) {
 			return new NextResponse(
-				"There is no products in your cart",
+				"There are no products in your cart",
 				{
 					status: 400,
 				}
