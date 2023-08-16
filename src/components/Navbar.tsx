@@ -7,7 +7,7 @@ import {
 	Ghost,
 	LogOut,
 	PlusCircle,
-	Settings2,
+	Gamepad,
 	ShoppingCart,
 	User2,
 	UserCircle2,
@@ -34,7 +34,7 @@ export default function Navbar() {
 	const dispatch = useDispatch()
 	const router = useRouter()
 
-	const itemSize = "w-7 h-7"
+	const itemSize = "w-8 h-8"
 
 	return (
 		<nav className=" w-full ">
@@ -48,27 +48,12 @@ export default function Navbar() {
 						GameGhost
 					</p>
 				</Link>
-				{status == "loading" ? (
-					<Spinner />
-				) : session?.user ? (
-					<Link
-						href={"/product/create"}
-						className="flex gap-2 items-center text-sm font-light group"
-					>
-						<p className="hidden md:inline-block group-hover:underline">
-							Sell your product
-						</p>
-						<PlusCircle className={itemSize} />
-					</Link>
-				) : (
-					<Button
-						variant="custom"
-						className={`bg-_green  hover:bg-_green/90`}
-						onClick={() => dispatch(open())}
-					>
-						Sign In
-					</Button>
-				)}
+
+				<CartSheet>
+					<button className=" bg-_darkBlue rounded-full p-2">
+						<ShoppingCart className={itemSize} />
+					</button>
+				</CartSheet>
 			</div>
 			<div className="absolute top-0 left-1/2 w-min h-[70px] z-20 -translate-x-1/2">
 				<div className="flex justify-center items-center h-full ">
@@ -92,9 +77,14 @@ export default function Navbar() {
 											Profile
 										</Link>
 									</DropdownMenuItem>
-									<DropdownMenuItem className="hover:cursor-pointer">
-										<Settings2 className="mr-2 w-4 h-4" />
-										Settings
+									<DropdownMenuItem
+										asChild
+										className="hover:cursor-pointer"
+									>
+										<Link href="/product/create">
+											<Gamepad className="mr-2 w-4 h-4" />
+											Sell product
+										</Link>
 									</DropdownMenuItem>
 									<DropdownMenuItem className="hover:cursor-pointer">
 										<button
@@ -117,11 +107,6 @@ export default function Navbar() {
 								<UserCircle2 className={itemSize} />
 							</button>
 						)}
-						<CartSheet>
-							<button className=" bg-_darkBlue rounded-full p-2">
-								<ShoppingCart className={itemSize} />
-							</button>
-						</CartSheet>
 					</div>
 				</div>
 			</div>
