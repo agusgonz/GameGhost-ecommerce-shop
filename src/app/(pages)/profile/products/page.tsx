@@ -68,7 +68,6 @@ const page: FC<pageProps> = ({}) => {
 							<ProductCard
 								key={product.id}
 								product={product}
-								includeDescription
 							/>
 						)
 					})}

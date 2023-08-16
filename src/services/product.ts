@@ -30,5 +30,12 @@ const createProduct = ({
 		images,
 		category,
 	})
+const deleteProduct = (id: string) =>
+	axios.get(`/api/product/delete?id=${id}`)
 
-export { getProduct, getProducts, createProduct }
+export {
+	getProduct,
+	getProducts,
+	createProduct,
+	deleteProduct,
+}

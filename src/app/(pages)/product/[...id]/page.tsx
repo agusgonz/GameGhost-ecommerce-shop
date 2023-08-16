@@ -15,12 +15,16 @@ import { FC, useEffect, useState } from "react"
 import InfoTabs from "@/components/ProductPage/InfoTabs"
 import FadeInAnimation from "@/components/FadeInAnimation"
 import AvatarIcon from "@/components/AvatarIcon"
+import DeleteProductButton from "@/components/DeleteProductButton"
+import { useSession } from "next-auth/react"
 
 interface pageProps {
 	params: { id: string }
 }
 
 const page: FC<pageProps> = ({ params }) => {
+	const { data: session, status } = useSession()
+
 	const [product, setProduct] = useState<Product>()
 	const [productError, setProductError] = useState()
 	const { toast } = useToast()
@@ -155,6 +159,13 @@ const page: FC<pageProps> = ({ params }) => {
 									<div>
 										<p>Stock: {product.stock}</p>
 									</div>
+									{session?.user.id === product.userId && (
+										<div>
+											<DeleteProductButton
+												productId={product.id}
+											/>
+										</div>
+									)}
 								</div>
 							</div>
 						</FadeInAnimation>
