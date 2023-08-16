@@ -24,11 +24,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${ubuntu.className} container bg-_darkBlue text-_white font-light w-full h-full`}
+				className={`${ubuntu.className}  bg-_darkBlue text-_white font-light w-full h-full`}
 			>
 				<ReduxProvider>
 					<AuthProvider>
-						<div className="w-full h-full 2xl:max-w-7xl 2xl:mx-auto">
+						<div className=" container w-full h-full">
 							<Navbar />
 							{children}
 							<Modal />
