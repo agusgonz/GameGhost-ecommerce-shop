@@ -66,13 +66,14 @@ const page: FC<pageProps> = ({ params }) => {
 							<div className="text-sm">
 								<Link href={"/"}>Home</Link>
 								<span className="font-bold">{" > "}</span>
-								<Link
+								{product.category[0].name}
+								{/* <Link
 									href={
 										"/category/" + product.category[0].name
 									}
 								>
 									{product.category[0].name}
-								</Link>
+								</Link> */}
 							</div>
 							<FadeInAnimation>
 								<div>
@@ -115,13 +116,14 @@ const page: FC<pageProps> = ({ params }) => {
 						<div className="text-sm">
 							<Link href={"/"}>Home</Link>
 							<span className="font-bold">{" > "}</span>
-							<Link
+							{product.category[0].name}
+							{/* <Link
 								href={
 									"/category/" + product.category[0].name
 								}
 							>
 								{product.category[0].name}
-							</Link>
+							</Link> */}
 						</div>
 						<FadeInAnimation>
 							<div className="w-full border-2 h-max border-_blue rounded-sm flex">
