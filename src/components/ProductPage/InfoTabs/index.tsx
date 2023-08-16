@@ -7,15 +7,21 @@ import {
 import { Review } from "store"
 import { FC } from "react"
 import ReviewsSection from "./ReviewsSection"
+import DescriptionSection from "./DescriptionSection"
 
 interface InfoTabsProps {
 	description: string
 	productId: string
+	seller: {
+		name: string
+		image: string
+	}
 }
 
 const InfoTabs: FC<InfoTabsProps> = ({
 	description,
 	productId,
+	seller,
 }) => {
 	return (
 		<Tabs
@@ -46,10 +52,10 @@ const InfoTabs: FC<InfoTabsProps> = ({
 				value="details"
 				className="p-2"
 			>
-				<div>
-					<p className="text-lg pb-1">Description: </p>
-					<p>{description}</p>
-				</div>
+				<DescriptionSection
+					description={description}
+					seller={seller}
+				/>
 			</TabsContent>
 			<TabsContent
 				value="reviews"

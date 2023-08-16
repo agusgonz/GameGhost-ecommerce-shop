@@ -14,6 +14,7 @@ import { FC, useEffect, useState } from "react"
 
 import InfoTabs from "@/components/ProductPage/InfoTabs"
 import FadeInAnimation from "@/components/FadeInAnimation"
+import AvatarIcon from "@/components/AvatarIcon"
 
 interface pageProps {
 	params: { id: string }
@@ -75,6 +76,12 @@ const page: FC<pageProps> = ({ params }) => {
 										<h1 className="text-3xl">
 											{product.title}
 										</h1>
+										<div className="flex gap-2">
+											<AvatarIcon
+												image={product.user.image}
+											/>
+											{product.user.name}
+										</div>
 										<RatePrev
 											avrStars={calculateAvrgStars()}
 											quantity={product.reviews.length}
@@ -125,6 +132,12 @@ const page: FC<pageProps> = ({ params }) => {
 									<h1 className="text-3xl ">
 										{product.title}
 									</h1>
+									<div className="flex gap-2">
+										<AvatarIcon
+											image={product.user.image}
+										/>
+										{product.user.name}
+									</div>
 									<RatePrev
 										avrStars={calculateAvrgStars()}
 										quantity={product.reviews.length}
@@ -151,6 +164,7 @@ const page: FC<pageProps> = ({ params }) => {
 					<InfoTabs
 						description={product.description}
 						productId={params.id}
+						seller={product.user}
 					/>
 				</FadeInAnimation>
 			</>

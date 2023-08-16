@@ -15,6 +15,12 @@ export async function GET(request: NextRequest) {
 				category: true,
 				reviews: true,
 				questionsAnswers: true,
+				user: {
+					select: {
+						name: true,
+						image: true,
+					},
+				},
 			},
 		})
 		if (!product) {

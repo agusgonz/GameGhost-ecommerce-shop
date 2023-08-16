@@ -10,6 +10,10 @@ declare module "store" {
 		buyersId: string[]
 		category: Category[]
 		reviews: Review[]
+		user: {
+			name: string
+			image: string
+		}
 	}
 	interface ProductImage {
 		access_mode: string
