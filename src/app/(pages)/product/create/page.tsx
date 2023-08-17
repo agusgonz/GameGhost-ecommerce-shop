@@ -110,7 +110,7 @@ export default function Sell() {
 			await createProduct(validatedFormData.data)
 				.then(res => {
 					toast({
-						description: "Product created succesfully",
+						description: "Product created successfully",
 						variant: "success",
 					})
 					router.push(`/product/${res.data.id}`)
