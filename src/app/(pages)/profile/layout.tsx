@@ -35,10 +35,6 @@ export default function ProfileLayout({
 								name={"Products"}
 								url={"/profile/products"}
 							/>
-							<OnActiveUnderline
-								name={"Sellings"}
-								url={"/profile/sellings"}
-							/>
 						</div>
 					</div>
 				</FadeInAnimation>
