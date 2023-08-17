@@ -16,14 +16,14 @@ import {
 import { Button } from "../ui/Button"
 import { Check, ChevronsUpDown } from "lucide-react"
 import {
-	CategoryList,
+	CategoryListTypes,
 	categoryList,
 } from "@/utils/constants"
 
 interface CategoryPopoverProps {
-	category: CategoryList | ""
+	category: CategoryListTypes | ""
 	inputStyle: string
-	setCategoryHandler: (value: CategoryList) => void
+	setCategoryHandler: (value: CategoryListTypes) => void
 }
 
 const CategoryPopover: FC<CategoryPopoverProps> = ({
@@ -69,7 +69,7 @@ const CategoryPopover: FC<CategoryPopoverProps> = ({
 										const valueCapitalized =
 											capitalizeString(currentValue)
 										setCategoryHandler(
-											valueCapitalized as CategoryList
+											valueCapitalized as CategoryListTypes
 										)
 
 										setOpenCategory(false)

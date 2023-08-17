@@ -1,10 +1,10 @@
 export const categoryList = [
 	"",
-	"PC's",
+	"Pc's",
 	"Laptops",
 	"Components",
 	"Smartphones",
-	"TV's",
+	"Tv's",
 	"Game Consoles",
 	"Games",
 	"Audio",
@@ -15,4 +15,5 @@ export const categoryList = [
 	"Other",
 ] as const
 
-export type CategoryList = (typeof categoryList)[number]
+export type CategoryListTypes =
+	(typeof categoryList)[number]

@@ -20,7 +20,7 @@ import ImageCarousel from "@/components/CreatePage/ImageCarousel"
 
 import { v4 as uuid } from "uuid"
 import {
-	CategoryList,
+	CategoryListTypes,
 	categoryList,
 } from "@/utils/constants"
 import CategoryPopover from "@/components/CreatePage/CategoryPopover"
@@ -44,7 +44,7 @@ export default function Sell() {
 	const [stock, setStock] = useState("")
 	const [images, setImages] = useState<ImageData[]>([])
 	const [category, setCategory] = useState<
-		CategoryList | ""
+		CategoryListTypes | ""
 	>("")
 
 	const [buttonLoading, setButtonLoading] = useState(false)
