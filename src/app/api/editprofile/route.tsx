@@ -53,7 +53,7 @@ export async function PATCH(request: NextRequest) {
 		return new NextResponse(
 			"There was a problem uploading the images",
 			{
-				status: 400,
+				status: 500,
 			}
 		)
 	}

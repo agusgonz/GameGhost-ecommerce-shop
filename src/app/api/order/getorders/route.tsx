@@ -11,27 +11,33 @@ export async function GET(request: NextRequest) {
 		)
 	}
 
-	const orders = await prisma.order.findMany({
-		where: {
-			buyerId: session.user.id,
-		},
+	try {
+		const orders = await prisma.order.findMany({
+			where: {
+				buyerId: session.user.id,
+			},
 
-		include: {
-			orderProds: {
-				include: {
-					product: {
-						include: {
-							productImages: {
-								select: {
-									secure_url: true,
+			include: {
+				orderProds: {
+					include: {
+						product: {
+							include: {
+								productImages: {
+									select: {
+										secure_url: true,
+									},
 								},
 							},
 						},
 					},
 				},
 			},
-		},
-	})
+		})
 
-	return NextResponse.json(orders)
+		return NextResponse.json(orders)
+	} catch (error) {
+		return new NextResponse("Something when wrong", {
+			status: 500,
+		})
+	}
 }

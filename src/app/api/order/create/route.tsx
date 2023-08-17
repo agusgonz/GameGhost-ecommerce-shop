@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
 		return new NextResponse(
 			"There was a problem creating the order",
 			{
-				status: 400,
+				status: 500,
 			}
 		)
 	}

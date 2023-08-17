@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 			return new NextResponse(
 				"There was a problem uploading the images",
 				{
-					status: 400,
+					status: 500,
 				}
 			)
 		}
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
 		return new NextResponse(
 			"There was a problem uploading the files",
 			{
-				status: 400,
+				status: 500,
 			}
 		)
 	}

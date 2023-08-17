@@ -10,15 +10,20 @@ export async function GET(request: NextRequest) {
 			{ status: 401 }
 		)
 	}
-	// console.log(session)
-	const products = await prisma.product.findMany({
-		where: {
-			userId: session.user.id,
-		},
-		include: {
-			productImages: true,
-		},
-	})
+	try {
+		const products = await prisma.product.findMany({
+			where: {
+				userId: session.user.id,
+			},
+			include: {
+				productImages: true,
+			},
+		})
 
-	return NextResponse.json(products)
+		return NextResponse.json(products)
+	} catch (error) {
+		return new NextResponse("Something when wrong", {
+			status: 500,
+		})
+	}
 }

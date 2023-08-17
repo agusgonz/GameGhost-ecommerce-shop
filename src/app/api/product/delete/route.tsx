@@ -5,27 +5,36 @@ export async function GET(request: NextRequest) {
 	const { searchParams } = new URL(request.url)
 	const id = searchParams.get("id")
 
-	if (id) {
-		const product = await prisma.product.delete({
-			where: {
-				id: id,
-			},
-		})
-		if (!product) {
-			return new NextResponse("The product do not exist", {
-				status: 404,
+	try {
+		if (id) {
+			const product = await prisma.product.delete({
+				where: {
+					id: id,
+				},
 			})
-		}
-		return new NextResponse(
-			"Product deleted successfully",
-			{
-				status: 200,
+			if (!product) {
+				return new NextResponse(
+					"The product do not exist",
+					{
+						status: 404,
+					}
+				)
 			}
-		)
-	} else {
-		return new NextResponse(
-			"You have to query a product id",
-			{ status: 400 }
-		)
+			return new NextResponse(
+				"Product deleted successfully",
+				{
+					status: 200,
+				}
+			)
+		} else {
+			return new NextResponse(
+				"You have to query a product id",
+				{ status: 400 }
+			)
+		}
+	} catch (error) {
+		return new NextResponse("Something when wrong", {
+			status: 500,
+		})
 	}
 }

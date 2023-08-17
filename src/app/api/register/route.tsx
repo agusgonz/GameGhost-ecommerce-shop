@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
 		return NextResponse.json(user)
 	} catch (err) {
 		return new NextResponse("Something when wrong", {
-			status: 400,
+			status: 500,
 		})
 	}
 }

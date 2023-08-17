@@ -41,7 +41,7 @@ export async function DELETE(request: NextRequest) {
 		return new NextResponse(
 			"There was a problem canceling the order",
 			{
-				status: 400,
+				status: 500,
 			}
 		)
 	}
