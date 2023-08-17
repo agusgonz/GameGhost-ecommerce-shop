@@ -16,50 +16,71 @@ interface SliderContainerProps {
 const SliderContainer: FC<SliderContainerProps> = ({
 	category,
 }) => {
+	// console.log(
+	// 	category.name + ": " + category.products.length
+	// )
+
+	let breakpoints: any[] = []
+	const producsQty = category.products.length
+
+	if (producsQty >= 1) {
+		breakpoints.push({
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+			},
+		})
+	}
+
+	if (producsQty >= 2) {
+		breakpoints.push({
+			breakpoint: 850,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				infinite: true,
+			},
+		})
+	}
+
+	if (producsQty >= 3) {
+		breakpoints.push({
+			breakpoint: 1150,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				infinite: true,
+			},
+		})
+	}
+
+	if (producsQty >= 4) {
+		breakpoints.push({
+			breakpoint: 99999,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				infinite: true,
+			},
+		})
+	}
+
 	const settings = {
 		infinite: true,
 		speed: 500,
-		// autoplay: true,
-		// autoplaySpeed: 3000,
-		slidesToShow: 5,
-		slidesToScroll: 5,
+		slidesToShow: producsQty,
+		slidesToScroll: producsQty,
 		pauseOnHover: true,
 		nextArrow: <CustomNextArrow />,
 		prevArrow: <CustomPrevArrow />,
-		responsive: [
-			{
-				breakpoint: 1450,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 4,
-					infinite: true,
-				},
-			},
-			{
-				breakpoint: 1150,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 3,
-					infinite: true,
-				},
-			},
-			{
-				breakpoint: 850,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-					infinite: true,
-				},
-			},
-			{
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					infinite: true,
-				},
-			},
-		],
+		responsive: breakpoints,
+	}
+
+	if (category.name == "Tv's") {
+		console.log(breakpoints)
+		console.log(settings)
 	}
 
 	return (
