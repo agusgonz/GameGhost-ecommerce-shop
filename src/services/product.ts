@@ -1,4 +1,4 @@
-import { CategoryList } from "@/utils/constants"
+import { CategoryListTypes } from "@/utils/constants"
 import axios from "axios"
 
 const getProduct = (id: string) =>
@@ -20,7 +20,7 @@ const createProduct = ({
 	price: number
 	stock: number
 	images: string[]
-	category: CategoryList
+	category: CategoryListTypes
 }) =>
 	axios.post("/api/product/upload", {
 		title,
